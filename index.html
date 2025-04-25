@@ -1,17 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Promise Note App</title>
-    <link rel="manifest" href="manifest.json">
-    <script defer src="app.js"></script>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ProMISe Note v2</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="app.js"></script>
 </head>
 <body>
-    <h1>Promise Note App</h1>
-    <textarea id="note" placeholder="Spreek of typ je notitie..."></textarea>
-    <button onclick="saveNote()">💾 Opslaan</button>
+  <header>
+    <h1>ProMISe Note</h1>
+  </header>
+  <main>
+    <button id="recordBtn">🎤 Spreek in</button>
+    <textarea id="note" placeholder="Typ of spreek je notitie..."></textarea>
+    <button id="correctBtn">✨ Taalcorrectie</button>
+    <button id="saveBtn">💾 Opslaan</button>
     <div id="savedNotes"></div>
+  </main>
 </body>
 </html>

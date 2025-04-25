@@ -1,13 +1,21 @@
 {
   "name": "Promise Note",
-  "short_name": "Note",
+  "short_name": "Promise",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#ffffff",
-  "description": "Snel notities maken via spraak of tekst",
-  "icons": [{
-    "src": "icon.png",
-    "sizes": "192x192",
-    "type": "image/png"
-  }]
+  "theme_color": "#0057B8",
+  "description": "Notities maken via spraak of tekst",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
 }
