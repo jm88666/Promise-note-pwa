@@ -1,45 +1,91 @@
+:root {
+  --primary-blue: #0057B8;
+  --accent-yellow: #FFD700;
+  --bg-light: #f5f5f5;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
-  background-color: #f5f5f5;
+  background: var(--bg-light);
+  color: #333;
 }
-header {
-  background-color: #0057B8;
-  color: #FFD700;
-  padding: 1rem;
+.app-header {
+  background: var(--primary-blue);
+  color: white;
   text-align: center;
+  padding: 1.5rem;
+}
+.app-header h1 {
+  font-size: 1.5rem;
 }
 main {
   padding: 1rem;
 }
-#recordBtn, #correctBtn, #saveBtn {
-  margin-top: 10px;
-  margin-right: 5px;
-  padding: 10px;
-  background-color: #0057B8;
-  color: white;
-  border: none;
-  border-radius: 5px;
+.record-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.record-btn-circle {
+  width: 80px;
+  height: 80px;
+  background: var(--accent-yellow);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--primary-blue);
   cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 .status {
-  margin-top: 5px;
+  margin-top: 0.5rem;
   font-size: 0.9rem;
-  color: #0057B8;
+  color: var(--primary-blue);
 }
-textarea {
-  width: 100%;
-  height: 100px;
-  margin-top: 10px;
-  padding: 10px;
-  font-size: 1rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-.note {
+.notes-list {
   background: white;
-  margin-top: 10px;
-  padding: 10px;
-  border-radius: 5px;
-  border-left: 4px solid #FFD700;
+  border-radius: 1rem 1rem 0 0;
+  overflow: hidden;
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
+}
+.notes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: var(--bg-light);
+}
+.notes-header h2 {
+  font-size: 1.25rem;
+}
+.add-btn {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: var(--primary-blue);
+  cursor: pointer;
+}
+.notes-list ul {
+  list-style: none;
+}
+.notes-list li {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.notes-list li:first-of-type {
+  border-top: none;
+}
+.notes-list .note-text {
+  flex: 1;
+  margin-right: 0.5rem;
+}
+.notes-list .note-date {
+  font-size: 0.8rem;
+  color: #666;
 }
