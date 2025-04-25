@@ -1,31 +1,49 @@
+window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
 let recognition;
 const recordBtn = document.getElementById('recordBtn');
+const recordStatus = document.getElementById('recordStatus');
 const saveBtn = document.getElementById('saveBtn');
 const correctBtn = document.getElementById('correctBtn');
 const noteArea = document.getElementById('note');
 const savedNotes = document.getElementById('savedNotes');
 
-if ('webkitSpeechRecognition' in window) {
-  recognition = new webkitSpeechRecognition();
+if (window.SpeechRecognition) {
+  recognition = new window.SpeechRecognition();
   recognition.lang = 'nl-NL';
   recognition.continuous = false;
   recognition.interimResults = false;
 
+  recognition.onstart = () => {
+    recordStatus.textContent = 'Opnemen...';
+    recordBtn.disabled = true;
+  };
+
+  recognition.onend = () => {
+    recordStatus.textContent = '';
+    recordBtn.disabled = false;
+  };
+
+  recognition.onresult = (event) => {
+    const transcript = event.results[0][0].transcript;
+    noteArea.value = transcript;
+  };
+
   recordBtn.addEventListener('click', () => {
     recognition.start();
   });
-
-  recognition.onresult = (event) => {
-    noteArea.value = event.results[0][0].transcript;
-  };
 } else {
   recordBtn.disabled = true;
   recordBtn.textContent = '🎙️ Niet ondersteund';
 }
 
 correctBtn.addEventListener('click', () => {
-  const text = noteArea.value;
-  noteArea.value = text.charAt(0).toUpperCase() + text.slice(1).replace(/\s+/g, ' ').trim() + '.';
+  const raw = noteArea.value;
+  if (!raw) return;
+  let text = raw.trim().replace(/\s+/g, ' ');
+  text = text.charAt(0).toUpperCase() + text.slice(1);
+  if (!/[.!?]$/.test(text)) text += '.';
+  noteArea.value = text;
 });
 
 saveBtn.addEventListener('click', () => {
@@ -45,8 +63,8 @@ saveBtn.addEventListener('click', () => {
 });
 
 function editNote(btn) {
-  const note = btn.parentElement.querySelector('p');
-  noteArea.value = note.textContent;
+  const noteText = btn.parentElement.querySelector('p').textContent;
+  noteArea.value = noteText;
   btn.parentElement.remove();
 }
 
@@ -59,3 +77,7 @@ function sendNote(btn) {
   const mailto = `mailto:jeroen.vanderveere@konvertiagroup.com?subject=ProMISe Note&body=${encodeURIComponent(text)}`;
   window.location.href = mailto;
 }
+
+window.addEventListener('load', () => {
+  console.log('ProMISe Note v2 loaded');
+});

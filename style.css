@@ -12,16 +12,7 @@ header {
 main {
   padding: 1rem;
 }
-textarea {
-  width: 100%;
-  height: 100px;
-  margin-top: 10px;
-  padding: 10px;
-  font-size: 1rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-button {
+#recordBtn, #correctBtn, #saveBtn {
   margin-top: 10px;
   margin-right: 5px;
   padding: 10px;
@@ -30,6 +21,20 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+.status {
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: #0057B8;
+}
+textarea {
+  width: 100%;
+  height: 100px;
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
 }
 .note {
   background: white;
